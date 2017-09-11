@@ -14,9 +14,12 @@ def run
         cookie.path = "/"
         agent.cookie_jar.add(cookie)
         page = agent.get(url) #Get the starting page
+        link = page.link_with(:text => "Forgot password?")
+
+        print(value)
     
         #if link = page.link_with(:text => "Sign in") # As long as there is still a nextpage link...
-        if link = page.link_with(:text => "Log in")
+        if link
             agent.cookie_jar.clear!
         else 
             #print "authorize\n"
